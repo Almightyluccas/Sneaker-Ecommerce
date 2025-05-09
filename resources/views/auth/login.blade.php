@@ -15,7 +15,7 @@
             <h2 class="mt-6 text-center text-3xl font-extrabold text-white">Sign in to your account</h2>
             <p class="mt-2 text-center text-sm text-gray-400">
                 Or
-                <a href="{{ route('register') }}" class="font-medium text-indigo-500 hover:text-indigo-400">
+                <a href="{{ route('register.show') }}" class="font-medium text-indigo-500 hover:text-indigo-400">
                     create a new account
                 </a>
             </p>
@@ -23,7 +23,7 @@
 
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
             <div class="bg-gray-900 py-8 px-4 shadow sm:rounded-lg sm:px-10 border border-gray-800">
-                <form class="space-y-6" action="{{ route('login') }}" method="POST">
+                <form class="space-y-6" action="{{ route('login.submit') }}" method="POST">
                     @csrf
 
                     <!-- Email Address -->

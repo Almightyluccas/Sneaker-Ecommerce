@@ -15,15 +15,18 @@ Route::view('/contact', 'contact')->name('contact');
 
 
 Route::controller(UserController::class)->group(function () {
-  Route::get('/login', 'auth.login')->name('login');
-  Route::get('/register', 'auth.register')->name('register');
+  Route::middleware('guest')->group(function () {
+    Route::view('/login', 'auth.login')->name('login.show');
+    Route::post('/login', 'login')->name('login.submit');
+    Route::view('/register', 'auth.register')->name('register.show');
+    Route::post('/register', 'register')->name('register.submit');
+    Route::view('/forgot-password', 'forgotPassword')->name('password.request');
+  });
+  Route::middleware(['auth'])->group(function () {
+    Route::view('/profile', 'profile')->name('profile');
+    Route::view('/settings', 'settings')->name('settings');
+    Route::post('/logout', 'logout')->name('logout');
+  });
 });
 
-Route::middleware(['auth'])->group(function () {
-  Route::view('/profile', 'profile')->name('profile');
-  Route::view('/settings', 'settings')->name('settings');
-  Route::get('/logout', function () {
-    auth()->logout();
-    return redirect()->route('home');
-  })->name('logout');
-});
+
