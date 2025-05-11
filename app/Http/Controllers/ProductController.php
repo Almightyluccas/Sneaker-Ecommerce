@@ -21,6 +21,7 @@ class ProductController extends Controller
             $query->inStock();
         }
 
+
         $products = $query->paginate(9);
 
         return view('shop', compact('products'));
@@ -45,9 +46,15 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
-    {
-        //
+    public function show(Product $product) {
+        $relatedProducts = Product::where('category', $product->category)
+            ->where('id', '!=', $product->id)
+            ->inStock()
+            ->inRandomOrder()
+            ->take(4)
+            ->get();
+
+        return view('product', compact('product', 'relatedProducts'));
     }
 
     /**

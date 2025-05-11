@@ -38,7 +38,7 @@ class Product extends Model
    * Get the formatted price.
    */
     public function getFormattedPriceAttribute(): string {
-        return '$' . number_format($this->price / 100, 2);
+        return '$' . number_format($this->price, 2);
     }
 
   /**
@@ -46,6 +46,10 @@ class Product extends Model
    */
     public function scopeInStock($query) {
         return $query->where('stock', '>', 0);
+    }
+
+    public function isInStock(): bool {
+        return $this->stock > 0;
     }
 
   /**

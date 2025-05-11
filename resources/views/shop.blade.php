@@ -88,7 +88,6 @@
                     </div>
                 </div>
 
-                <!-- Products -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach($products as $product)
                         @include('components.product-card', [
@@ -102,9 +101,10 @@
                     @endforeach
                 </div>
 
-                <div class="mt-12 flex items-center justify-between border-t border-gray-800 pt-6">
+                <div class="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-gray-800 pt-6">
                     {{ $products->appends(request()->query())->links() }}
                 </div>
+
             </div>
         </div>
     </div>

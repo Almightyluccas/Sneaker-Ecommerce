@@ -2,7 +2,7 @@
 
 @vite('resources/js/product-page.js')
 
-@section('title', 'Product Details')
+@section('title', $product->name)
 
 @section('content')
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -21,13 +21,14 @@
                     <svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
-                    <a href="#" class="ml-2 text-gray-400 hover:text-white text-sm">Electronics</a>
+{{--                    TODO: Make this reidrect to the category--}}
+                    <a href="#" class="ml-2 text-gray-400 hover:text-white text-sm">{{$product->category}}</a>
                 </li>
                 <li class="flex items-center">
                     <svg class="h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg>
-                    <span class="ml-2 text-white text-sm font-medium">Premium Wireless Headphones</span>
+                    <span class="ml-2 text-white text-sm font-medium">{{$product->name}}</span>
                 </li>
             </ol>
         </nav>
@@ -37,34 +38,37 @@
             <div id="product-gallery">
                 <!-- Main Image -->
                 <div class="bg-gray-900 rounded-lg overflow-hidden border border-gray-800">
-                    <img id="main-image" src="https://via.placeholder.com/600/1F2937/FFFFFF/?text=Headphones-1" alt="Product Image" class="w-full h-auto object-center object-cover">
+                    <img id="main-image" src="{{ $product->thumbnail }}" alt="Product Image" class="w-full h-auto object-center object-cover">
                 </div>
 
                 <!-- Thumbnails -->
-                <div class="mt-4 grid grid-cols-4 gap-4">
-                    <button class="thumbnail-button bg-gray-900 rounded-md overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-150 ring-2 ring-indigo-500" data-image="https://via.placeholder.com/600/1F2937/FFFFFF/?text=Headphones-1">
-                        <img src="https://via.placeholder.com/600/1F2937/FFFFFF/?text=Headphones-1" alt="Product thumbnail" class="w-full h-24 object-center object-cover">
-                    </button>
-                    <button class="thumbnail-button bg-gray-900 rounded-md overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-150" data-image="https://via.placeholder.com/600/1F2937/FFFFFF/?text=Headphones-2">
-                        <img src="https://via.placeholder.com/600/1F2937/FFFFFF/?text=Headphones-2" alt="Product thumbnail" class="w-full h-24 object-center object-cover">
-                    </button>
-                    <button class="thumbnail-button bg-gray-900 rounded-md overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-150" data-image="https://via.placeholder.com/600/1F2937/FFFFFF/?text=Headphones-3">
-                        <img src="https://via.placeholder.com/600/1F2937/FFFFFF/?text=Headphones-3" alt="Product thumbnail" class="w-full h-24 object-center object-cover">
-                    </button>
-                    <button class="thumbnail-button bg-gray-900 rounded-md overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-150" data-image="https://via.placeholder.com/600/1F2937/FFFFFF/?text=Headphones-4">
-                        <img src="https://via.placeholder.com/600/1F2937/FFFFFF/?text=Headphones-4" alt="Product thumbnail" class="w-full h-24 object-center object-cover">
-                    </button>
-                </div>
+{{--                <div class="mt-4 grid grid-cols-4 gap-4">--}}
+{{--                    <button class="thumbnail-button bg-gray-900 rounded-md overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-150 ring-2 ring-indigo-500" data-image="https://via.placeholder.com/600/1F2937/FFFFFF/?text=Headphones-1">--}}
+{{--                        <img src="https://via.placeholder.com/600/1F2937/FFFFFF/?text=Headphones-1" alt="Product thumbnail" class="w-full h-24 object-center object-cover">--}}
+{{--                    </button>--}}
+{{--                    <button class="thumbnail-button bg-gray-900 rounded-md overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-150" data-image="https://via.placeholder.com/600/1F2937/FFFFFF/?text=Headphones-2">--}}
+{{--                        <img src="https://via.placeholder.com/600/1F2937/FFFFFF/?text=Headphones-2" alt="Product thumbnail" class="w-full h-24 object-center object-cover">--}}
+{{--                    </button>--}}
+{{--                    <button class="thumbnail-button bg-gray-900 rounded-md overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-150" data-image="https://via.placeholder.com/600/1F2937/FFFFFF/?text=Headphones-3">--}}
+{{--                        <img src="https://via.placeholder.com/600/1F2937/FFFFFF/?text=Headphones-3" alt="Product thumbnail" class="w-full h-24 object-center object-cover">--}}
+{{--                    </button>--}}
+{{--                    <button class="thumbnail-button bg-gray-900 rounded-md overflow-hidden border border-gray-800 hover:border-gray-700 transition-all duration-150" data-image="https://via.placeholder.com/600/1F2937/FFFFFF/?text=Headphones-4">--}}
+{{--                        <img src="https://via.placeholder.com/600/1F2937/FFFFFF/?text=Headphones-4" alt="Product thumbnail" class="w-full h-24 object-center object-cover">--}}
+{{--                    </button>--}}
+{{--                </div>--}}
             </div>
 
             <!-- Product Details -->
             <div>
                 <div class="flex items-center">
                     <span class="px-2 py-1 text-xs font-semibold text-white bg-indigo-600 rounded-full">New</span>
-                    <span class="ml-2 px-2 py-1 text-xs font-semibold text-white bg-green-600 rounded-full">In Stock</span>
-                </div>
+                    @if ($product->isInStock())
+                        <span class="px-2 py-1 text-xs font-semibold text-white bg-green-600 rounded-full">In Stock</span>
+                    @else
+                        <span class="px-2 py-1 text-xs font-semibold text-white bg-red-600 rounded-full">Out of Stock</span>
+                    @endif                </div>
 
-                <h1 class="mt-4 text-2xl md:text-3xl font-bold text-white">Premium Wireless Headphones</h1>
+                <h1 class="mt-4 text-2xl md:text-3xl font-bold text-white">{{$product->name}}</h1>
 
                 <div class="mt-4 flex items-center">
                     <div class="flex items-center">
@@ -77,21 +81,19 @@
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                         </svg>
                     </div>
+{{--                    TODO: add reviews--}}
                     <span class="ml-2 text-sm text-gray-400">4.0 (128 reviews)</span>
                 </div>
 
                 <div class="mt-6">
-                    <h2 class="text-xl font-bold text-white">$129.99</h2>
+                    <h2 class="text-xl font-bold text-white">{{$product->formatted_price}}</h2>
                     <p class="mt-1 text-sm text-gray-400">Free shipping on orders over $50</p>
                 </div>
 
                 <div class="mt-6">
                     <h3 class="text-sm font-medium text-white">Color</h3>
                     <div class="mt-2 flex items-center space-x-3">
-                        <button class="color-selector relative w-8 h-8 rounded-full bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ring-2 ring-indigo-500 ring-offset-2 ring-offset-gray-900" data-color="black"></button>
-                        <button class="color-selector relative w-8 h-8 rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" data-color="white"></button>
-                        <button class="color-selector relative w-8 h-8 rounded-full bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" data-color="gray"></button>
-                        <button class="color-selector relative w-8 h-8 rounded-full bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" data-color="indigo"></button>
+                        {{$product->colorway}}
                     </div>
                 </div>
 
@@ -127,16 +129,7 @@
                 <div class="mt-8 border-t border-gray-800 pt-8">
                     <h3 class="text-lg font-medium text-white">Product Description</h3>
                     <div class="mt-4 prose prose-sm text-gray-300">
-                        <p>Experience premium sound quality with our wireless headphones. These headphones feature active noise cancellation technology that blocks out external noise, allowing you to immerse yourself in your music or podcasts.</p>
-                        <p class="mt-4">The comfortable over-ear design and soft ear cushions make these headphones perfect for extended listening sessions. With up to 30 hours of battery life, you can enjoy your audio content all day long without needing to recharge.</p>
-                        <ul class="mt-4 list-disc pl-5 space-y-2">
-                            <li>Active Noise Cancellation</li>
-                            <li>Bluetooth 5.0 connectivity</li>
-                            <li>30-hour battery life</li>
-                            <li>Built-in microphone for calls</li>
-                            <li>Foldable design for easy storage</li>
-                            <li>Compatible with voice assistants</li>
-                        </ul>
+                        <p>{{$product->description}}</p>
                     </div>
                 </div>
 
@@ -144,28 +137,29 @@
                     <h3 class="text-lg font-medium text-white">Specifications</h3>
                     <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
                         <div>
-                            <h4 class="text-sm font-medium text-gray-400">Connectivity</h4>
-                            <p class="mt-1 text-sm text-white">Bluetooth 5.0, 3.5mm jack</p>
+{{--                           TODO: Fix release_date to remove 00:00:000--}}
+                            <h4 class="text-sm font-medium text-gray-400">Release Date</h4>
+                            <p class="mt-1 text-sm text-white">{{$product->release_date}}</p>
                         </div>
                         <div>
-                            <h4 class="text-sm font-medium text-gray-400">Battery Life</h4>
-                            <p class="mt-1 text-sm text-white">Up to 30 hours</p>
+                            <h4 class="text-sm font-medium text-gray-400">Colors</h4>
+                            <p class="mt-1 text-sm text-white">{{$product->colorway}}</p>
                         </div>
                         <div>
-                            <h4 class="text-sm font-medium text-gray-400">Charging Time</h4>
-                            <p class="mt-1 text-sm text-white">2 hours</p>
+                            <h4 class="text-sm font-medium text-gray-400">Silhouette</h4>
+                            <p class="mt-1 text-sm text-white">{{$product->silhoutte}}</p>
                         </div>
                         <div>
-                            <h4 class="text-sm font-medium text-gray-400">Weight</h4>
-                            <p class="mt-1 text-sm text-white">250g</p>
+                            <h4 class="text-sm font-medium text-gray-400">Brand</h4>
+                            <p class="mt-1 text-sm text-white">{{$product->brand}}</p>
                         </div>
-                        <div>
-                            <h4 class="text-sm font-medium text-gray-400">Dimensions</h4>
-                            <p class="mt-1 text-sm text-white">7.5 x 6.5 x 4 inches</p>
-                        </div>
+{{--                        <div>--}}
+{{--                            <h4 class="text-sm font-medium text-gray-400">Dimensions</h4>--}}
+{{--                            <p class="mt-1 text-sm text-white">7.5 x 6.5 x 4 inches</p>--}}
+{{--                        </div>--}}
                         <div>
                             <h4 class="text-sm font-medium text-gray-400">Warranty</h4>
-                            <p class="mt-1 text-sm text-white">1 year</p>
+                            <p class="mt-1 text-sm text-white">7 day</p>
                         </div>
                     </div>
                 </div>
@@ -335,16 +329,19 @@
             <h2 class="text-2xl font-bold text-white">You May Also Like</h2>
 
             <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                @for ($i = 1; $i <= 4; $i++)
+{{--                todo: implement isNew isSale or remove--}}
+                @forelse ($relatedProducts as $relatedProduct)
                     @include('components.product-card', [
-                        'id' => $i,
-                        'name' => 'Related Product ' . $i,
-                        'price' => 49.99 + ($i * 20),
-                        'image' => 'https://via.placeholder.com/300/1F2937/FFFFFF/?text=Related' . $i,
-                        'isNew' => $i === 2,
-                        'isSale' => $i === 4
+                        'id' => $relatedProduct->id,
+                        'name' => $relatedProduct->name,
+                        'price' => $relatedProduct->price,
+                        'image' => $relatedProduct->thumbnail,
+                        'isNew' => false,
+                        'isSale' => false
                     ])
-                @endfor
+                @empty
+                    <p class="text-gray-400 col-span-4 text-center">No related products found</p>
+                @endforelse
             </div>
         </div>
     </div>

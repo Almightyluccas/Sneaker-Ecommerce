@@ -47,16 +47,17 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                @for ($i = 1; $i <= 4; $i++)
+{{--                TODO: implemnet isNew and isSale--}}
+                @foreach ($featuredProducts as $product)
                     @include('components.product-card', [
-                        'id' => $i,
-                        'name' => 'Product ' . $i,
-                        'price' => 29.99 + ($i * 10),
-                        'image' => 'https://via.placeholder.com/300/1F2937/FFFFFF/?text=Product' . $i,
-                        'isNew' => $i === 1,
-                        'isSale' => $i === 3
+                        'id' => $product->id,
+                        'name' => $product->name,
+                        'price' => $product->price,
+                        'image' => $product->thumbnail,
+                        'isNew' => false,
+                        'isSale' => false
                     ])
-                @endfor
+                @endforeach
             </div>
         </div>
     </section>

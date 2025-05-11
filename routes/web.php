@@ -1,19 +1,20 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
 
-Route::view('/', 'home')->name('home');
 Route::view('/about', 'about')->name('about');
 Route::view('/cart', 'cart')->name('cart');
-Route::view('/product', 'product')->name('product');
 Route::view('/checkout', 'checkout')->name('checkout');
 Route::view('/contact', 'contact')->name('contact');
 
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/shop', [ProductController::class, 'index'])->name('shop');
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('product.show');
 
 
 Route::controller(UserController::class)->group(function () {
