@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 
 class UserController extends Controller {
-    public function login(LoginRequest $request) {
+    public function login(LoginRequest $request): RedirectResponse {
       $credentials = $request->validated();
       $remember = $request->boolean('remember');
 
@@ -21,7 +22,7 @@ class UserController extends Controller {
       return redirect()->route('home');
     }
 
-    public function register(RegisterRequest $request) {
+    public function register(RegisterRequest $request): RedirectResponse {
       $validatedRequest = $request->validated();
 
       $user = User::create([
@@ -35,7 +36,7 @@ class UserController extends Controller {
       return redirect()->route('home');
     }
 
-    public function logout() {
+    public function logout(): RedirectResponse {
       auth()->logout();
       return redirect()->route('home');
     }
