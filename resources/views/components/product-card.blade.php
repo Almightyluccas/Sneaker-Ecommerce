@@ -10,7 +10,6 @@
             <div class="absolute top-2 left-2 bg-rose-600 text-white text-xs font-bold px-2 py-1 rounded">Sale</div>
         @endif
 
-        <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300"></div>
 
         <div class="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex space-x-2">
             <button class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium py-2 px-4 rounded-md transition duration-150">
